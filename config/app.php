@@ -183,6 +183,10 @@ return [
         // Laravel logs
         Arcanedev\LogViewer\LogViewerServiceProvider::class,
 
+
+        // Google maps realize
+        Cornford\Googlmapper\MapperServiceProvider::class,
+
         // ide helper
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         // social auth
@@ -242,10 +246,9 @@ return [
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
         'Form' => Collective\Html\FormFacade::class,
-        'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
-
+        'Mapper'     => Cornford\Googlmapper\Facades\MapperFacade::class,
     ],
 
 ];

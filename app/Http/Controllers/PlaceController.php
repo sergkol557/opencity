@@ -12,6 +12,7 @@ use App\Accessibility;
 use App\ParameterTitle;
 use App\AccessibilityTitle;
 use Illuminate\Http\Request;
+use Mapper;
 
 class PlaceController extends Controller
 {
@@ -22,6 +23,18 @@ class PlaceController extends Controller
      */
     public function index()
     {
+        Mapper::map(48.5050277987034, 32.2593695292334 ,['zoom' => 15]);
+        $places = Place::all();
+        $places = $places->toArray();
+        foreach ($places as $marker)
+        {
+            if (isset($marker['map_lat']) && isset($marker['map_lng']))
+            {
+                Mapper::marker($marker['map_lat'], $marker['map_lng']);
+            }
+
+        }
+
         return view('app')
             ->with('categories', Category::all())
             ->with('accessibilities', AccessibilityTitle::all());

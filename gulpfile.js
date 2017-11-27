@@ -13,11 +13,10 @@ const elixir = require('laravel-elixir');
  |
  */
 
-elixir(mix => {
-  mix
+elixir
     .sass('app.scss')
     .webpack('map.js')
     .webpack('app.js')
     .version(['css/app.css', 'js/map.js', 'js/app.js']);
-})
-// ;
+
+

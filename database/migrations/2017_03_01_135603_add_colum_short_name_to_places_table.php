@@ -26,7 +26,7 @@ class AddColumShortNameToPlacesTable extends Migration
     public function down()
     {
         Schema::table('places', function ($table) {
-            $table->dropColumn('short_name');
+            $table->dropColumn(['short_name',]);
         });
     }
 }

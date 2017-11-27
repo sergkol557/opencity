@@ -61,7 +61,7 @@ CREATE TABLE `accessibility_titles` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -88,7 +88,7 @@ CREATE TABLE `categories` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -97,7 +97,7 @@ CREATE TABLE `categories` (
 
 LOCK TABLES `categories` WRITE;
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-INSERT INTO `categories` VALUES (1,'загальні','Загальний навчальний заклад','2016-12-26 05:30:44','2017-01-04 11:32:59'),(2,'спеціальні','Спеціальні навчальні заклади','2016-12-26 07:59:57','2017-01-04 11:33:08'),(3,'позашкільні','Позашкільні навчальні заклади','2016-12-26 08:00:51','2017-01-04 11:33:13'),(4,'дошкільні','Дошкільні навчальні заклади','2016-12-26 08:01:24','2016-12-26 08:01:28'),(6,'мед. заклади','Медичні заклади','2017-01-27 11:15:12','2017-01-27 21:13:32');
+INSERT INTO `categories` VALUES (1,'загальні','Загальний навчальний заклад','2016-12-26 05:30:44','2017-01-04 11:32:59'),(2,'спеціальні','Спеціальні навчальні заклади','2016-12-26 07:59:57','2017-01-04 11:33:08'),(3,'позашкільні','Позашкільні навчальні заклади','2016-12-26 08:00:51','2017-01-04 11:33:13'),(4,'дошкільні','Дошкільні навчальні заклади','2016-12-26 08:01:24','2016-12-26 08:01:28'),(6,'мед. заклади','Медичні заклади','2017-01-27 11:15:12','2017-01-27 21:13:32'),(7,'загальні','Загальньоосвітні навчальні заклади',NULL,NULL),(8,'спеціальні','Спеціальні навчальні заклади',NULL,NULL),(9,'позашкільні','Позашкільні навчальні заклади',NULL,NULL),(10,'дошкільні','Дошкільні навчальні заклади',NULL,NULL);
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -169,7 +169,7 @@ CREATE TABLE `parameter_titles` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -201,7 +201,7 @@ CREATE TABLE `parameters` (
   KEY `parameters_param_title_id_foreign` (`param_title_id`),
   CONSTRAINT `parameters_param_title_id_foreign` FOREIGN KEY (`param_title_id`) REFERENCES `parameter_titles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `parameters_place_id_foreign` FOREIGN KEY (`place_id`) REFERENCES `places` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=691 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=679 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -319,7 +319,7 @@ CREATE TABLE `places` (
   PRIMARY KEY (`id`),
   KEY `places_category_id_foreign` (`category_id`),
   CONSTRAINT `places_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=180 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=174 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -355,6 +355,7 @@ CREATE TABLE `role_user` (
 
 LOCK TABLES `role_user` WRITE;
 /*!40000 ALTER TABLE `role_user` DISABLE KEYS */;
+INSERT INTO `role_user` VALUES (1,1);
 /*!40000 ALTER TABLE `role_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -374,7 +375,7 @@ CREATE TABLE `roles` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `roles_name_unique` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -383,6 +384,7 @@ CREATE TABLE `roles` (
 
 LOCK TABLES `roles` WRITE;
 /*!40000 ALTER TABLE `roles` DISABLE KEYS */;
+INSERT INTO `roles` VALUES (1,'admin','Адміністратор','Almighty admin. Can do everything',NULL,NULL);
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -436,7 +438,7 @@ CREATE TABLE `users` (
   `banned` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -445,7 +447,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','admin@admin.com','$2y$10$5kZAtJrzJmYYGhhy6AV7FeCPnKlY94Gb15CPW/205qy2oM7WGx10O','YOtvjTtEaXU5wJevEokkFZ3Vi5ztyXkWVgpIOwakED2eEAei9VljvTNaJF6H',NULL,'2017-02-03 07:48:29',0);
+INSERT INTO `users` VALUES (1,'admin','admin@admin.com','$2y$10$5kZAtJrzJmYYGhhy6AV7FeCPnKlY94Gb15CPW/205qy2oM7WGx10O','MO6w3VJnSr5r7kMR7A8IBR3IknkmkIUwZQfp7PnXVjEIRxSLGfmfYmq6EGNA',NULL,'2017-02-03 07:48:29',0),(2,'admin','admin@admin1.com','$2y$10$RFcxy8kCqfYAD66X3ILmounYVqFdXWlAeEI5aI05/YPZOD3rac042','amFgm1gR4MmeXx3MBpo4z4dFAMdsT2hzhtFWVYfRPuQdcklj567E7dn0D3ix','2017-11-25 19:49:31','2017-11-25 19:49:31',0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -458,4 +460,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-11-21 22:16:49
+-- Dump completed on 2017-11-27  8:27:53

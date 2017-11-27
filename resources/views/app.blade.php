@@ -102,6 +102,9 @@
                 <div class="user-control-block">{{ auth()->user()->name }}</div>
             @endif
         </div>
+        {{--<div class="oc-main-map">--}}
+            {{--{!! Mapper::render() !!}--}}
+        {{--</div>--}}
         <div id="map"></div>
         @include('components.right-bar')
         <a class="waves-effect waves-light btn modal-trigger main-trolley__button light-blue lighten-5 black-text" href="#low_trolley_modal">

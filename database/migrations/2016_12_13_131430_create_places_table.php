@@ -19,7 +19,6 @@ class CreatePlacesTable extends Migration
             $table->integer('address_id')->unsigned()->nullable()->default(null);
             $table->integer('category_id')->unsigned()->nullable()->default(null);
             $table->string('comment')->nullable()->default(null);
-            $table->boolean('verified');
             $table->timestamps();
         });
     }

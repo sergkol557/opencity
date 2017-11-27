@@ -14,8 +14,8 @@ class AddProviderColumnDefaultValueUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('provider')->default('registration');
-            $table->string('provider_id')->default(null);
+            $table->string('provider')->default('registration')->change();
+            $table->string('provider_id')->default(null)->change();
         });
     }
 
@@ -27,8 +27,8 @@ class AddProviderColumnDefaultValueUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('provider');
-            $table->dropColumn('provider_id');
+            $table->string('provider')->change();
+            $table->string('provider_id')->change();
         });
     }
 }

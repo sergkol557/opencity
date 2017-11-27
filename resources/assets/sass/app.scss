@@ -6,6 +6,16 @@
 @import "components/login-float-block";
 @import "components/right-info-bar";
 
+.oc-main-map, .oc-main-map-holder{
+  width: 100%;
+  height: calc(100vh - 36px);
+}
+.oc-main-map {
+  position: absolute;
+  z-index: -1;
+  top: 36px;
+}
+
 // Bootstrap
 //@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 //@import "public/css/bootstrap";

@@ -27,6 +27,7 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::get('places/create', 'PlaceController@create'); // todo: add create place permission middleware
     Route::post('places/', 'PlaceController@store'); // todo: add create place permission middleware
     Route::get('places/{id}/edit', 'PlaceAdminController@edit'); // todo: add edit place permission middleware
+    Route::get('/edit_place', 'PlaceAdminController@edit_place');
 
     Route::get('/categories/create', 'CategoriesController@create');
     Route::post('/categories/create', 'CategoriesController@store');

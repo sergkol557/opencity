@@ -10,6 +10,7 @@ use GuzzleHttp\Client;
 use App\ParameterTitle;
 use App\AccessibilityTitle;
 use Illuminate\Http\Request;
+use Mapper;
 
 class PlaceAdminController extends Controller
 {
@@ -18,6 +19,7 @@ class PlaceAdminController extends Controller
      *
      * @return void
      */
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -48,6 +50,29 @@ class PlaceAdminController extends Controller
             'categories' => $categories,
             'current_category' => $cur_cat,
         ]);
+    }
+
+    /**
+     * Show marker edit page
+     *
+     * @return Response
+     */
+
+    public function edit_place(){
+
+        Mapper::map(48.5050277987034, 32.2593695292334 ,['zoom' => 15]);
+        $places = Place::all();
+        $places = $places->toArray();
+        foreach ($places as $marker)
+        {
+            if (isset($marker['map_lat']) && isset($marker['map_lng']))
+            {
+                Mapper::marker($marker['map_lat'], $marker['map_lng'], ['draggable' => true]);
+            }
+
+        }
+
+        return view('places.edit');
     }
 
 

@@ -74,4 +74,13 @@
   color: #fff;
 }
 
+.oc-main-map, .oc-main-map-holder{
+  width: 100%;
+  height: calc(100vh - 36px);
+}
+.oc-main-map {
+  position: absolute;
+  top: 36px;
+}
+
 /*# sourceMappingURL=app.css.map */
